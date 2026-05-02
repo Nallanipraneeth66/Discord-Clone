@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand */
+    --brand: 88 101 242; /* Discord-like blurple */
+    --brand-2: 99 102 241; /* indigo */
+
+    /* Background surfaces */
+    --bg-0: 10 12 16; /* app background */
+    --bg-1: 17 20 27; /* primary surface */
+    --bg-2: 24 28 39; /* secondary surface */
+    --bg-3: 32 37 52; /* elevated surface */
+
+    /* Text */
+    --fg-0: 244 247 255; /* primary text */
+    --fg-1: 182 189 205; /* secondary text */
+    --fg-2: 132 141 165; /* muted text */
+
+    /* Borders */
+    --bd-0: 43 49 69;
+    --bd-1: 55 63 87;
+
+    /* Semantic */
+    --danger: 239 68 68;
+    --success: 34 197 94;
+    --warning: 245 158 11;
+
+    /* Radii */
+    --r-sm: 10px;
+    --r-md: 14px;
+    --r-lg: 18px;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background: rgb(var(--bg-0));
+    color: rgb(var(--fg-0));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(var(--brand), 0.35);
+  }
+}
+
+@layer components {
+  .ui-surface {
+    background: rgb(var(--bg-1));
+    color: rgb(var(--fg-0));
+  }
+
+  .ui-panel {
+    background: rgb(var(--bg-2));
+    border: 1px solid rgba(var(--bd-0), 0.9);
+    border-radius: var(--r-md);
+  }
+
+  .ui-divider {
+    background: rgba(var(--bd-0), 0.9);
+  }
+
+  .ui-input {
+    @apply w-full outline-none;
+    background: rgba(var(--bg-0), 0.65);
+    border: 1px solid rgba(var(--bd-0), 0.9);
+    border-radius: var(--r-sm);
+    color: rgb(var(--fg-0));
+    padding: 0.5rem 0.75rem;
+  }
+  .ui-input::placeholder {
+    color: rgb(var(--fg-2));
+  }
+  .ui-input:focus {
+    border-color: rgba(var(--brand), 0.85);
+    box-shadow: 0 0 0 3px rgba(var(--brand), 0.18);
+  }
+
+  .ui-btn {
+    @apply inline-flex items-center justify-center font-semibold select-none;
+    border-radius: var(--r-sm);
+    padding: 0.5rem 0.75rem;
+    transition: transform 120ms ease, background 120ms ease, border-color 120ms ease,
+      box-shadow 120ms ease, color 120ms ease;
+  }
+  .ui-btn:active {
+    transform: translateY(1px);
+  }
+
+  .ui-btn-primary {
+    background: rgb(var(--brand));
+    color: white;
+  }
+  .ui-btn-primary:hover {
+    background: rgba(var(--brand), 0.9);
+  }
+
+  .ui-btn-ghost {
+    background: rgba(var(--bg-3), 0.35);
+    border: 1px solid rgba(var(--bd-0), 0.8);
+    color: rgb(var(--fg-0));
+  }
+  .ui-btn-ghost:hover {
+    background: rgba(var(--bg-3), 0.55);
+    border-color: rgba(var(--bd-1), 0.9);
+  }
+
+  .ui-chip-active {
+    background: rgba(var(--bg-3), 0.6);
+    border: 1px solid rgba(var(--bd-0), 0.9);
+    color: rgb(var(--fg-0));
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(var(--bg-2), 0.9);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--bd-1), 0.85);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--bd-1), 1);
+  }
+
+
+
+
+
+  .custom-scrollbar2::-webkit-scrollbar {
+    width: 1px;  /* Scrollbar'ın genişliği */
+    height: 1px;  /* Yatay scrollbar için */
+  }
+  
+  /* Scrollbar'ın "thumb" kısmı (görünür kısmı) */
+  .custom-scrollbar2::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--bd-1), 0.9);  /* Thumb rengi */
+    border-radius: 1px;      /* Yuvarlak köşeler */
+  }
+  
+  /* Scrollbar'ı hover ederken biraz daha koyu yapmak */
+  .custom-scrollbar2::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--bd-1), 1);  /* Hover'da thumb rengi */
+  }
+  
+  /* Firefox için */
+  .custom-scrollbar2 {
+    scrollbar-width:thin;  /* Scrollbar'ı ince yapar */
+    scrollbar-color: rgba(var(--bd-1), 0.9) rgba(var(--bg-2), 0.9);  /* Thumb rengi ve scrollbar arka planı */
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}

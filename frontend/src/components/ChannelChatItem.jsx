@@ -1,0 +1,14 @@
+import { FaHashtag } from "react-icons/fa6";
+import { useUserContext } from "../context/UserContext";
+
+const ChannelChatItem = ({chatName, setIsAreaOpen}) => {
+  const {setSelectedChatRoom, setActiveRoom, selectedChatRoom} = useUserContext();
+  const handleSelectedRoom = () => { setSelectedChatRoom(chatName); setIsAreaOpen(false); setActiveRoom("chat"); };
+  return (
+    <div onClick={() => handleSelectedRoom()} className={`w-full h-10 ${selectedChatRoom === chatName && "text-white bg-[#51555c] font-extrabold"} text-gray-400 flex items-center gap-3 px-7 hover:bg-gray-700 rounded-lg cursor-pointer hover:text-white `}>
+      <FaHashtag className='text-xl md:text-2xl' />
+      <p className='font-semibold text-sm md:text-base'>{chatName}</p>
+    </div>
+  );
+};
+export default ChannelChatItem;
